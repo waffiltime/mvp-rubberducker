@@ -1,2 +1,2 @@
-# mvp-smartcontractpull
-barebones API pull from smart contract to store and render
+# mvp-rubberducker
+talk to the rubber duck

@@ -4,13 +4,13 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			addresses: []
+			messages: []
 		}
 	}
 
 onSearch (address) {
 	console.log(address);
-  console.log(`Searching address ${address}`);
+  console.log(`Talking to Rubber Ducker`);
   fetch('/../rec', {
     method: 'POST',
     body: JSON.stringify({
@@ -26,8 +26,8 @@ onSearch (address) {
 
 render () {
     return (<div>
-      <h1>Ethereum Smart Contract Puller</h1>
-      <Contracts contracts={this.state.addresses}/>
+      <h1>Rubber Ducker</h1>
+      <Messages messages={this.state.messages}/>
       <Search onSearch={this.onSearch.bind(this)}/>
     </div>)
   }

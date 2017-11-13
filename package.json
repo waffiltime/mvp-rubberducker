@@ -1,7 +1,7 @@
 {
-  "name": "mvp-smartcontractpull",
+  "name": "mvp-rubberducker",
   "version": "1.0.0",
-  "description": "barebones API pull from smart contract to store and render",
+  "description": "talk to the rubber duck",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waffiltime/mvp-smartcontractpull.git"
+    "url": "git+https://github.com/waffiltime/mvp-rubberducker.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/waffiltime/mvp-smartcontractpull/issues"
+    "url": "https://github.com/waffiltime/mvp-rubberducker/issues"
   },
-  "homepage": "https://github.com/waffiltime/mvp-smartcontractpull#readme",
+  "homepage": "https://github.com/waffiltime/mvp-rubberducker#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",

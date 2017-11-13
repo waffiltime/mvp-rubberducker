@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/contracts');
+mongoose.connect('mongodb://localhost/rubberduck');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -7,44 +7,26 @@ db.once('open', function() {
   console.log('connection success');
 });
 
-let contractSchema = mongoose.Schema({
-  contractaddress: {type: String, unique: true}
+let messageSchema = mongoose.Schema({
+  incmessage: {type: String, unique: true}
+  respmessage: {type: String, unique: true}
 });
 
-let userSchema = mongoose.Schema({
-  username: {type: String, unique: true}
-});
 
-let Contract = mongoose.model('Contract', contractSchema);
+let Message = mongoose.model('Message', contractSchema);
 
-let User = mongoose.model('User', userSchema);
-
-//let waffiltime = new User({
-// 	username: waffiltime
-// })
 
 let save = (thing) => {
   console.log('thing =', thing);
-  if(thing.body.address) {
-    let address = new Contract({
-      contractaddress: thing.body.address
+  if(thing.body.message) {
+    let newMessage = new Message({
+      message: thing.body.message
     })
-    address.save(function(err, address) {
+    message.save(function(err, message) {
       if(err) {
         return console.error(err);
       } else {
-        console.log('Address ' + thing.body.address + ' saved');
-      }
-    })
-  } else if(thing.body.username) {
-    let username = new User({
-      username: thing.body.username
-    })
-    username.save(function(err, username) {
-      if(err) {
-        return console.error(err);
-      } else {
-        console.log('Username ' + thing.body.username + ' saved');
+        console.log('Message ' + thing.body.message + ' saved');
       }
     })
   }
