@@ -17,28 +17,35 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      addresses: []
+      messages: []
     };
     return _this;
   }
 
   _createClass(App, [{
     key: 'onSearch',
-    value: function onSearch(address) {
-      console.log(address);
-      console.log('Searching address ' + address);
+    value: function onSearch(message) {
+      console.log(message);
+      console.log('Talking to Rubber Ducker');
       fetch('/../rec', {
         method: 'POST',
         body: JSON.stringify({
-          address: address
+          incmessage: message
         }),
         headers: {
           "Content-Type": "application/json"
         }
       }).then(function (response) {
+        console.log('response = ', response.json());
+        //this.state.messages setState with response
         return response.json();
+      }).then(function (json) {
+        console.log('json =', json);
       });
     }
+  }, {
+    key: 'renderMessage',
+    value: function renderMessage() {}
   }, {
     key: 'render',
     value: function render() {
@@ -48,9 +55,10 @@ var App = function (_React$Component) {
         React.createElement(
           'h1',
           null,
-          'Ethereum Smart Contract Puller'
+          'Meet Rubber Ducker, your new favorite HIR'
         ),
-        React.createElement(Contracts, { contracts: this.state.addresses }),
+        React.createElement('img', { src: '/resources/duck.jpg' }),
+        React.createElement(Messages, { messages: this.state.messages }),
         React.createElement(Search, { onSearch: this.onSearch.bind(this) })
       );
     }

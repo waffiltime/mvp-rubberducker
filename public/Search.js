@@ -17,7 +17,7 @@ var Search = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
 
 		_this.state = {
-			address: ''
+			message: ''
 		};
 		return _this;
 	}
@@ -25,14 +25,14 @@ var Search = function (_React$Component) {
 	_createClass(Search, [{
 		key: 'search',
 		value: function search() {
-			this.props.onSearch(this.state.address);
+			this.props.onSearch(this.state.message);
 		}
 	}, {
-		key: 'updateAddress',
-		value: function updateAddress(event) {
+		key: 'updateMessage',
+		value: function updateMessage(event) {
 			console.log('event.target.value =', event.target.value);
 			this.setState({
-				address: event.target.value
+				message: event.target.value
 			});
 		}
 	}, {
@@ -44,13 +44,13 @@ var Search = function (_React$Component) {
 				React.createElement(
 					'span',
 					null,
-					'Enter smart contract address here!! '
+					'Enter message: '
 				),
-				React.createElement('input', { type: 'text', name: 'address', onChange: this.updateAddress.bind(this) }),
+				React.createElement('input', { type: 'text', name: 'message', onChange: this.updateMessage.bind(this) }),
 				React.createElement(
 					'button',
 					{ onClick: this.search.bind(this) },
-					' Add contract '
+					' Submit! '
 				)
 			);
 		}

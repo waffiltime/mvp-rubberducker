@@ -8,32 +8,32 @@ db.once('open', function() {
 });
 
 let messageSchema = mongoose.Schema({
-  incmessage: {type: String, unique: true}
-  respmessage: {type: String, unique: true}
+  incmessage: {type: String, unique: true, sparse: true},
+  respmessage: {type: String, unique: true, sparse: true}
 });
 
 
-let Message = mongoose.model('Message', contractSchema);
+let Message = mongoose.model('Message', messageSchema);
 
 
 let save = (thing) => {
-  console.log('thing =', thing);
-  if(thing.body.message) {
-    let newMessage = new Message({
-      message: thing.body.message
-    })
-    message.save(function(err, message) {
-      if(err) {
-        return console.error(err);
-      } else {
-        console.log('Message ' + thing.body.message + ' saved');
-      }
-    })
-  }
-}
-
-
-let find = (thing) => {
   
+  let newMessage = new Message({
+    incmessage: thing.body.message
+  })
+  newMessage.save(function(err, message) {
+    if(err) {
+      return console.error(err);
+    } else {
+      console.log('Message ' + thing.body.message + ' saved');
+    }
+  })
 }
+
+
+let find = (thing, callback) => {
+  Message.find(thing, callback);
+};
+
 module.exports.save = save;
+module.exports.find = find;

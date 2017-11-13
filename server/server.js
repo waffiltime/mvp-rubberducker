@@ -8,8 +8,13 @@ app.use(bodyParser.json());
 
 
 app.post('/rec', function (req, res) {
- console.log(req.body);
- mongoose.save(req);
+  console.log('req.body = ', req.body);
+  response = '';
+  mongoose.find(req.body.incmessage, function(err, result) {
+  	response = result[0].respmessage;
+  });
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(JSON.stringify(response));
 });
 
 app.get('/rec', function (req, res) {

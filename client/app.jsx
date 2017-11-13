@@ -1,5 +1,3 @@
-
-
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -8,28 +6,38 @@ class App extends React.Component {
 		}
 	}
 
-onSearch (address) {
-	console.log(address);
+onSearch (message) {
+	console.log(message);
   console.log(`Talking to Rubber Ducker`);
   fetch('/../rec', {
     method: 'POST',
     body: JSON.stringify({
-      address: address
+      incmessage: message
     }),
     headers: {
       "Content-Type": "application/json"
     }
-  }).then(function(response) {
+  }).then((response)=>{
+    console.log('response = ', response.json());
+    //this.state.messages setState with response
     return response.json();
+  }).then((json)=>{
+    console.log('json =', json);
   })
 }
 
+renderMessage () {
+  
+}
+
 render () {
-    return (<div>
-      <h1>Rubber Ducker</h1>
-      <Messages messages={this.state.messages}/>
-      <Search onSearch={this.onSearch.bind(this)}/>
-    </div>)
+  return (<div>
+    <h1>Meet Rubber Ducker, your new favorite HIR</h1>
+    <img src="/resources/duck.jpg" />
+    <Messages messages={this.state.messages}/>
+    <Search onSearch={this.onSearch.bind(this)}/>
+  </div>
+  )
   }
 }
 
